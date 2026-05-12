@@ -80,7 +80,9 @@
 				C9ED2C6F2FB2609B00799FFD /* LMTestCompareUITests */,
 				C9ED2C562FB2609900799FFD /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		C9ED2C562FB2609900799FFD /* Products */ = {
 			isa = PBXGroup;

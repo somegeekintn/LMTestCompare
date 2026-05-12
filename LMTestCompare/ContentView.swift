@@ -8,17 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var model: Model = .qwen3_0_0_6B_4bit
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        ScrollView {
+            VStack {
+                Picker("Model", selection: $model) {
+                    ForEach(Model.allCases) { model in
+                        Text(model.name).tag(model)
+                    }
+                }
+                .pickerStyle(.menu)
+
+                Divider()
+
+                model
+
+                Spacer()
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
 #Preview {
     ContentView()
 }
+
