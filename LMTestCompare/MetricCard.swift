@@ -23,7 +23,7 @@ struct MetricCard: View {
                     .foregroundStyle(.secondary)
             }
             Text(value)
-                .font(.title3)
+                .font(.headline)
                 .fontWeight(.semibold)
         }
         .frame(maxWidth: .infinity)

@@ -20,7 +20,7 @@ struct ContentView: View {
                 }
                 .pickerStyle(.menu)
 
-                Divider()
+                Color.accentColor.frame(height: 2)
 
                 model
 

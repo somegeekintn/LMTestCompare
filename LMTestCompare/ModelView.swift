@@ -17,6 +17,7 @@ import SwiftUI
 
 enum Model: View, CaseIterable, Identifiable {
     case devstral_sm_2_24B_4bit
+    case foundation_macOS27     // Unable to run in test harness so stats are incomplete. 3B parameter model?
     case gemma_4_e2b_it_4bit
     case qwen3_0_0_6B_4bit
     case qwen3_0_1_7B_4bit
@@ -31,6 +32,7 @@ enum Model: View, CaseIterable, Identifiable {
     var name: String {
         switch self {
         case .devstral_sm_2_24B_4bit:   "Devstral-Small-2-24B-Instruct-2512-4bit"
+        case .foundation_macOS27:       "Foundation-macOS27"
         case .gemma_4_e2b_it_4bit:      "Gemma-4-e2b-it-4bit"
         case .qwen3_0_0_6B_4bit:        "Qwen3-0.6B-4bit"
         case .qwen3_0_1_7B_4bit:        "Qwen3-1.7B-4bit"
@@ -45,6 +47,7 @@ enum Model: View, CaseIterable, Identifiable {
     var notes: String {
         switch self {
         case .devstral_sm_2_24B_4bit:   "❌ 3 whitespace errors. Produces decent result unclear if thinking supported? Uses Foundation's Measurement type!"
+        case .foundation_macOS27:       "❌ 2 minor errors. Output units based on selected conversion? Converts to something. Not correct thing."
         case .gemma_4_e2b_it_4bit:      "❌ 2 errors. Also missing . before view modifiers = crashes! After fixes doesn't update on state change. Interesting design though."
         case .qwen3_0_0_6B_4bit:        "❌ thought for quite a while. eventually nonsense"
         case .qwen3_0_1_7B_4bit:        "❌ endless thinking loop. Gave up"
@@ -61,6 +64,7 @@ enum Model: View, CaseIterable, Identifiable {
     var tokensPerSecond: Double {
         switch self {
         case .devstral_sm_2_24B_4bit:   18.0
+        case .foundation_macOS27:       49.9
         case .gemma_4_e2b_it_4bit:      49.5
         case .qwen3_0_0_6B_4bit:        89.6
         case .qwen3_0_1_7B_4bit:         0.0
@@ -75,6 +79,7 @@ enum Model: View, CaseIterable, Identifiable {
     var totalTime: Double {
         switch self {
         case .devstral_sm_2_24B_4bit:    48.2
+        case .foundation_macOS27:         8.2
         case .gemma_4_e2b_it_4bit:       48.5
         case .qwen3_0_0_6B_4bit:         33.6
         case .qwen3_0_1_7B_4bit:          0.0
@@ -89,6 +94,7 @@ enum Model: View, CaseIterable, Identifiable {
     var sizeOnDisk: Int {
         switch self {
         case .devstral_sm_2_24B_4bit:   14120980982
+        case .foundation_macOS27:                 0
         case .gemma_4_e2b_it_4bit:       3613534021
         case .qwen3_0_0_6B_4bit:          349718417
         case .qwen3_0_1_7B_4bit:          982348043
@@ -103,6 +109,7 @@ enum Model: View, CaseIterable, Identifiable {
     var activeMemory: Int {
         switch self {
         case .devstral_sm_2_24B_4bit:   13511745968
+        case .foundation_macOS27:                 0
         case .gemma_4_e2b_it_4bit:       2661369154
         case .qwen3_0_0_6B_4bit:          511544416
         case .qwen3_0_1_7B_4bit:                  0
@@ -117,6 +124,7 @@ enum Model: View, CaseIterable, Identifiable {
     var peakMemory: Int {
         switch self {
         case .devstral_sm_2_24B_4bit:   13837447442
+        case .foundation_macOS27:                 0
         case .gemma_4_e2b_it_4bit:       3317340520
         case .qwen3_0_0_6B_4bit:          907156160
         case .qwen3_0_1_7B_4bit:                  0
@@ -132,6 +140,7 @@ enum Model: View, CaseIterable, Identifiable {
     var resultView: some View {
         switch self {
         case .devstral_sm_2_24B_4bit:   ResultView_Devstral_sm_2_24B_4bit()
+        case .foundation_macOS27:       ResultView_Foundation_macOS27()
         case .gemma_4_e2b_it_4bit:      ResultView_Gemma_4_e2b_it_4bit()
         case .qwen3_0_0_6B_4bit:        ResultView_Qwen3_0_0_6B_4bit()
         case .qwen3_0_1_7B_4bit:        ResultView_Qwen3_0_1_7B_4bit()
@@ -142,6 +151,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_6_27B_4bit:         ResultView_Qwen3_6_27B_4bit()
         }
     }
+
     var body: some View {
         VStack {
             MetricCard(
@@ -187,9 +197,14 @@ enum Model: View, CaseIterable, Identifiable {
                 )
             }
 
-            Divider()
+            Color.accentColor.frame(height: 2)
             
             resultView
+                .padding(8)
+                .background {
+                    RoundedRectangle(cornerRadius: 8.0)
+                        .stroke(Color.gray.opacity(0.2), lineWidth: 2)
+                }
         }
     }
 
