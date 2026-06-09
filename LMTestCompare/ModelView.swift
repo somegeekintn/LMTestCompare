@@ -25,6 +25,7 @@ enum Model: View, CaseIterable, Identifiable {
     case qwen3_0_8B_4bit
     case qwen3_5_4B_4bit
     case qwen3_5_9B_4bit
+    case qwen3_6_27B_3bit
     case qwen3_6_27B_4bit
 
     var id: String { name }
@@ -40,6 +41,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:          "Qwen3-8B-4bit"
         case .qwen3_5_4B_4bit:          "Qwen3.5-4B-8bit"
         case .qwen3_5_9B_4bit:          "Qwen3.5-9B-8bit"
+        case .qwen3_6_27B_3bit:         "Qwen3.6-27B-3bit"
         case .qwen3_6_27B_4bit:         "Qwen3.6-27B-4bit"
         }
     }
@@ -55,6 +57,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:          "✅ compiled! Worked with a small issue that was corrected"
         case .qwen3_5_4B_4bit:          "✅❌ Compile but did not function and not sure what it was going for. Colorful though!"
         case .qwen3_5_9B_4bit:          "❌ 1 error which required multiple edits. Not great"
+        case .qwen3_6_27B_3bit:         "✅ Compiled. No issues. Actually works quite well"
         case .qwen3_6_27B_4bit:         "✅ Very clean. 1 small issue in that swap button is invisible"
         }
     }
@@ -72,6 +75,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:          46.5
         case .qwen3_5_4B_4bit:          41.5
         case .qwen3_5_9B_4bit:          28.2
+        case .qwen3_6_27B_3bit:         11.8
         case .qwen3_6_27B_4bit:         11.4
         }
     }
@@ -87,6 +91,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:           90.5
         case .qwen3_5_4B_4bit:           63.6
         case .qwen3_5_9B_4bit:           82.5
+        case .qwen3_6_27B_3bit:          99.5
         case .qwen3_6_27B_4bit:         352.3
         }
     }
@@ -102,6 +107,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:           4622117343
         case .qwen3_5_4B_4bit:           5163545044
         case .qwen3_5_9B_4bit:          10453463050
+        case .qwen3_6_27B_3bit:         12109547461
         case .qwen3_6_27B_4bit:         16081502469
         }
     }
@@ -117,6 +123,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:           5362710512
         case .qwen3_5_4B_4bit:           4691307936
         case .qwen3_5_9B_4bit:           9698441648
+        case .qwen3_6_27B_3bit:         12089580336
         case .qwen3_6_27B_4bit:         15481461552
         }
     }
@@ -132,6 +139,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:           5600675364
         case .qwen3_5_4B_4bit:           5595455522
         case .qwen3_5_9B_4bit:          10493460838
+        case .qwen3_6_27B_3bit:         12811996432
         case .qwen3_6_27B_4bit:         16577321950
         }
     }
@@ -148,6 +156,7 @@ enum Model: View, CaseIterable, Identifiable {
         case .qwen3_0_8B_4bit:          ResultView_Qwen3_0_8B_4bit()
         case .qwen3_5_4B_4bit:          ResultView_Qwen3_5_4B_4bit()
         case .qwen3_5_9B_4bit:          ResultView_Qwen3_5_9B_4bit()
+        case .qwen3_6_27B_3bit:         ResultView_Qwen3_6_27B_3bit()
         case .qwen3_6_27B_4bit:         ResultView_Qwen3_6_27B_4bit()
         }
     }
